@@ -1,5 +1,5 @@
 <template>
-  <div>设置</div>
+  <nav>header-nav</nav>
 </template>
 
 <script lang="ts">
@@ -12,6 +12,9 @@ export default defineComponent({
 })
 </script>
 
-<style scoped>
-
+<style lang="scss" scoped>
+  nav {
+    height: 100%;
+    background: #dddfff
+  }
 </style>

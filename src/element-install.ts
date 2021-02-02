@@ -1,8 +1,16 @@
-import { ElButton } from 'element-plus'
 import { App } from 'vue'
+import {
+  ElButton,
+  ElMenu,
+  ElSubmenu,
+  ElMenuItem
+} from 'element-plus'
 
 const components = [
-  ElButton
+  ElButton,
+  ElMenu,
+  ElSubmenu,
+  ElMenuItem
 ]
 
 export default {

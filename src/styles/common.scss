@@ -1,4 +1,5 @@
 html, body {
+  height: 100%;
   margin: 0px;
   padding: 0px;
   color: $color-text;
@@ -8,7 +9,51 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-dl, ul, ol {
+div, section, main, nav, aside, dl, ul, ol {
   margin: 0px;
   padding: 0px;
+  box-sizing: border-box;
+}
+
+#app {
+  display: flex;
+  height: 100%;
+  background: $background-global;
+
+  > aside {
+    width: $aside-width;
+    height: 100%;
+  }
+
+  > aside + div {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    > header {
+      height: $nav-height;
+    }
+
+    > main {
+      height: 100%;
+    }
+
+    > .router-view_wrap {
+      width: 100%;
+    }
+  }
+}
+
+.router-view_wrap {
+  display: flex;
+  flex-direction: column;
+  padding: $spacing-x;
+}
+
+.router-view_content {
+  height: 100%;
+  padding: $spacing;
+  overflow-y: auto;
+  background: #fff;
+  border-radius: 10px;
 }

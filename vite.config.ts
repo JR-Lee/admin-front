@@ -9,6 +9,7 @@ export default defineConfig({
   // 路径别名
   alias: {
     '@': path.resolve('src'),
+    pages: path.resolve('src/pages')
     // components: path.resolve('src/components'),
     // styles: path.resolve('src/styles'),
     // utils: path.resolve('src/utils'),

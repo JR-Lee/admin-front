@@ -1,5 +1,7 @@
 <template>
-  <div>设置</div>
+  <div>
+    登录
+  </div>
 </template>
 
 <script lang="ts">
