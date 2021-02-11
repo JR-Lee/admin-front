@@ -1,0 +1,52 @@
+.ut_cursor-pointer{
+  cursor: pointer;
+}
+
+.ut_bold {
+  font-weight: bold;
+}
+
+.ut_no-shadow {
+  box-shadow: none!important;
+}
+
+.ut_color-text {
+  color: $color-text;
+}
+
+.ut_color-info {
+  color: $--color-info;
+}
+
+.ut_color-primary {
+  color: $--color-primary;
+}
+
+.ut_color-warning {
+  color: $--color-warning;
+}
+
+.ut_color-success {
+  color: $--color-success;
+}
+
+.ut_color-danger {
+  color: $--color-danger;
+}
+
+/** 动画 */
+.ut_slide-down {
+  animation: slide-down .4s;
+  animation-fill-mode: both;
+
+  @keyframes slide-down {
+    0% {
+      transform-origin: 50% 0;
+      transform: scaleY(0)
+    }
+    100% {
+      transform-origin: 50% 0;
+      transform: scaleY(1)
+    } 
+  }
+}

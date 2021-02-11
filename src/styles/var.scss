@@ -1,17 +1,50 @@
-// 导航栏高度
-$nav-height: 100px;
+/* 主题色变量 start */
+$--color-primary: #409EFF;
 
-// 侧边栏宽度
-$aside-width: 280px;
+$--color-success: #44dd22aa;
+
+$--color-warning: #E6A23C;
+
+$--color-danger: #F56C6C;
+
+$--color-info: #909399;
+/* 主题颜色变量 end */
 
 // 全局背景
 $background-global: #f5f7fa;
 
-// 文本颜色
-$color-text: #333;
+// 主要背景 - 暗黑模式时可以设置为黑色
+$background-main: #ffffff;
+
+// 主要阴影色
+$shadow-main: #f3f3f3;
+
+// 主要边框色
+$border-main: #DCDFE6;
+
+// 次边框
+$border-secondary: #E4E7ED;
+
+// 主要文本色
+$color-text: #303133;
+
+// 常规文本色
+$color-text-common: #606266;
+
+// 次要文本
+$color-text-secondary: #909399;
+
+// 链接色
+$color-link: #409EFF;
+
+// 导航栏高度
+$nav-height: 55px;
+
+// 侧边栏宽度
+$aside-width: 200px;
 
 // 正常文本
-$size-text: 15px;
+$size-text: 14px;
 // 大号文本
 $size-text-large: 16px;
 $size-text-large-x: 17px;
@@ -22,5 +55,5 @@ $size-text-small-x: 13px;
 $size-text-small-2x: 12px;
 
 // 统一边距
-$spacing: 15px;
+$spacing: 13px;
 $spacing-x: 20px;

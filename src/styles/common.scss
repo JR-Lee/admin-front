@@ -1,10 +1,19 @@
+// ::-webkit-scrollbar {
+//   width: 7px;
+//   height: 7px;
+// }
+
+// ::-webkit-scrollbar-thumb {
+//   background: $--color-primary;
+// }
+
 html, body {
   height: 100%;
   margin: 0px;
   padding: 0px;
   color: $color-text;
-  font-size: 15px;
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-size: $size-text;
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", Tahoma, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -15,45 +24,31 @@ div, section, main, nav, aside, dl, ul, ol {
   box-sizing: border-box;
 }
 
-#app {
-  display: flex;
-  height: 100%;
-  background: $background-global;
+a {
+  text-decoration: none;
+  color: $color-link;
+}
 
-  > aside {
-    width: $aside-width;
-    height: 100%;
-  }
-
-  > aside + div {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-
-    > header {
-      height: $nav-height;
-    }
-
-    > main {
-      height: 100%;
-    }
-
-    > .router-view_wrap {
-      width: 100%;
-    }
-  }
+.iconfont {
+  font-size: $size-text;
 }
 
 .router-view_wrap {
   display: flex;
   flex-direction: column;
-  padding: $spacing-x;
+  padding: $spacing;
+  overflow-y: auto;
 }
 
 .router-view_content {
-  height: 100%;
+  min-height: 100%;
   padding: $spacing;
   overflow-y: auto;
-  background: #fff;
-  border-radius: 10px;
+  background: $background-main;
+}
+
+.block-title {
+  line-height: 42px;
+  padding: 0px $spacing;
+  border-bottom: 1px solid $border-secondary;
 }

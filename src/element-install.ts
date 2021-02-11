@@ -3,14 +3,30 @@ import {
   ElButton,
   ElMenu,
   ElSubmenu,
-  ElMenuItem
+  ElMenuItem,
+  ElTooltip,
+  ElAvatar,
+  ElDropdown,
+  ElDropdownMenu,
+  ElDropdownItem,
+  ElBreadcrumb,
+  ElBreadcrumbItem,
+  ElDrawer
 } from 'element-plus'
 
 const components = [
   ElButton,
   ElMenu,
   ElSubmenu,
-  ElMenuItem
+  ElMenuItem,
+  ElTooltip,
+  ElAvatar,
+  ElDropdown,
+  ElDropdownMenu,
+  ElDropdownItem,
+  ElBreadcrumb,
+  ElBreadcrumbItem,
+  ElDrawer
 ]
 
 export default {
