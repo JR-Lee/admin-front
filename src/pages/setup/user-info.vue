@@ -1,7 +1,7 @@
 <template>
   <header class="block-title">设置我的资料</header>
   <div class="block-content">
-    <el-form label-width="125px" class="user-info_form">
+    <el-form label-width="125px" class="app-form">
       <el-form-item label="我的角色">
         <el-select v-model="form.role" :style="{ width: '100%' }" placeholder="请选择角色">
           <el-option
@@ -120,15 +120,3 @@ export default defineComponent({
   }
 })
 </script>
-
-<style lang="scss" scoped>
-  .user-info_form:deep() {
-    .el-input, .el-select {
-      max-width: 250px;
-    }
-
-    .el-textarea {
-      max-width: 400px;
-    }
-  }
-</style>

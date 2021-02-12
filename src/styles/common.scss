@@ -57,3 +57,13 @@ a {
 .block-content {
   padding: $spacing;
 }
+
+.app-form {
+  .el-input, .el-select {
+    max-width: 250px;
+  }
+
+  .el-textarea {
+    max-width: 400px;
+  }
+}
