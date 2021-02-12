@@ -89,6 +89,7 @@ export default defineComponent({
   .aside-menu{
     width: $aside-width;
     height: 100%;
+    border-right: none;
     background-color: $background-main;
 
     &.el-menu--collapse {

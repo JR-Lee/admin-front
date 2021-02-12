@@ -7,7 +7,7 @@
       <header-nav></header-nav>
       <section v-show="!isConsole" class="app-crumb ut_slide-down">
         <el-breadcrumb separator="/">
-          <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+          <el-breadcrumb-item :to="{ path: '/' }">主页</el-breadcrumb-item>
           <el-breadcrumb-item
             v-for="(item, index) in $route.matched"
             :to="{ path: item.path }"
@@ -18,7 +18,9 @@
       </section>
     </header>
     <main class="router-view_wrap">
-      <router-view class="router-view_content"></router-view>
+      <div class="router-view_content">
+        <router-view></router-view>
+      </div>
     </main>
   </div>
 </template>
@@ -60,6 +62,7 @@ export default defineComponent({
     flex-direction: column;
     width: auto;
     height: 100%;
+    border-right: 1px solid $border-main;
     background: $background-main;
   }
 
@@ -71,14 +74,6 @@ export default defineComponent({
     > header {
       z-index: 1;
       box-shadow: $shadow-main 2px 2px 2px;
-    }
-
-    > main {
-      height: 100%;
-    }
-
-    > .router-view_wrap {
-      width: 100%;
     }
   }
 

@@ -11,7 +11,16 @@ import {
   ElDropdownItem,
   ElBreadcrumb,
   ElBreadcrumbItem,
-  ElDrawer
+  ElDrawer,
+  ElSelect,
+  ElOption,
+  ElForm,
+  ElFormItem,
+  ElInput,
+  ElRadioGroup,
+  ElRadio,
+  ElUpload,
+  ElDialog
 } from 'element-plus'
 
 const components = [
@@ -26,7 +35,16 @@ const components = [
   ElDropdownItem,
   ElBreadcrumb,
   ElBreadcrumbItem,
-  ElDrawer
+  ElDrawer,
+  ElSelect,
+  ElOption,
+  ElForm,
+  ElFormItem,
+  ElInput,
+  ElRadioGroup,
+  ElRadio,
+  ElUpload,
+  ElDialog
 ]
 
 export default {

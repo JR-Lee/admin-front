@@ -18,6 +18,10 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+textarea {
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", Tahoma, Arial, sans-serif;
+}
+
 div, section, main, nav, aside, dl, ul, ol {
   margin: 0px;
   padding: 0px;
@@ -34,21 +38,22 @@ a {
 }
 
 .router-view_wrap {
-  display: flex;
-  flex-direction: column;
+  width: 100%;
+  height: 100%;
   padding: $spacing;
   overflow-y: auto;
 }
 
 .router-view_content {
   min-height: 100%;
-  padding: $spacing;
-  overflow-y: auto;
   background: $background-main;
 }
 
 .block-title {
-  line-height: 42px;
-  padding: 0px $spacing;
+  padding: $spacing;
   border-bottom: 1px solid $border-secondary;
+}
+
+.block-content {
+  padding: $spacing;
 }
