@@ -20,7 +20,8 @@ import {
   ElRadioGroup,
   ElRadio,
   ElUpload,
-  ElDialog
+  ElDialog,
+  ElRadioButton
 } from 'element-plus'
 
 const components = [
@@ -44,7 +45,8 @@ const components = [
   ElRadioGroup,
   ElRadio,
   ElUpload,
-  ElDialog
+  ElDialog,
+  ElRadioButton
 ]
 
 export default {

@@ -34,6 +34,42 @@
   color: $--color-danger;
 }
 
+.ut_align-center {
+  text-align: center;
+}
+
+.ut_align-right {
+  text-align: right;
+}
+
+.ut_align-left {
+  text-align: left;
+}
+
+.ut_space-between {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ut_display-flex {
+  display: flex;
+}
+
+.ut_horizontal-center {
+  justify-content: center;
+}
+
+.ut_vertical-center {
+  align-items: center;
+}
+
+.ut_layout-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
 /** 动画 */
 .ut_slide-down {
   animation: slide-down .4s;

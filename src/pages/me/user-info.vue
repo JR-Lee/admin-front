@@ -20,13 +20,12 @@
       </el-form-item>
       <el-form-item label="性别">
         <el-radio-group v-model="form.gender">
-          <el-radio
-            border
+          <el-radio-button
             v-for="(gender, index) in $store.state.genderMap"
             :label="gender[1]"
             :value="gender[0]"
             :key="index">
-          </el-radio>
+          </el-radio-button>
         </el-radio-group>
       </el-form-item>
       <el-form-item label="头像">
@@ -59,9 +58,11 @@
       </el-form-item>
       <el-form-item label="备注">
         <el-input
-          v-model="form.remark"
           type="textarea"
+          v-model="form.remark"
           placeholder="请输入备注"
+          :maxlength="200"
+          show-word-limit
           :autosize="{ minRows: 3, maxRows: 7}">
         </el-input>
       </el-form-item>

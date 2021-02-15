@@ -39,25 +39,21 @@
         <span title="全屏展示" @click="fullScreenHandler"><i class="iconfont icon-quanping"></i></span>
       </div>
       <div class="nav-item nav-ink">
-        <el-avatar shape="circle" size="small" :src="$store.state.userInfo.avatar"></el-avatar>
         <el-dropdown trigger="click" placement="bottom-end">
-          <span class="user_menu">{{ $store.state.userInfo.name }} <i class="iconfont icon-xiala2"></i></span>
+          <div class="user-info">
+            <el-avatar shape="circle" size="small" :src="$store.state.userInfo.avatar"></el-avatar>
+            <span>{{ $store.state.userInfo.name }} <i class="iconfont icon-xiala2"></i></span>
+          </div>
           <template #dropdown>
             <el-dropdown-menu>
-              <el-dropdown-item>
-                <router-link :to="{ name: 'user-info' }" class="ut_color-text">
-                  <i class="iconfont icon-yonghuxinxi"></i> 用户信息
-                </router-link>
+              <el-dropdown-item @click="$router.push({ name: 'user-info' })">
+                <i class="iconfont icon-yonghuxinxi"></i> 用户信息
               </el-dropdown-item>
-              <el-dropdown-item>
-                <router-link :to="{ name: 'change-pass' }" class="ut_color-text">
-                  <i class="iconfont icon-xiugaimima01"></i> 修改密码
-                </router-link>
+              <el-dropdown-item @click="$router.push({ name: 'change-pass' })">
+                <i class="iconfont icon-xiugaimima01"></i> 修改密码
               </el-dropdown-item>
-              <el-dropdown-item divided>
-                <router-link :to="{ name: 'home' }" class="ut_color-text">
-                  <i class="iconfont icon-icon-out-light"></i> 退出登录
-                </router-link>
+              <el-dropdown-item @click="logoutHandler" divided>
+                <i class="iconfont icon-icon-out-light"></i> 退出登录
               </el-dropdown-item>
             </el-dropdown-menu>
           </template>
@@ -73,6 +69,7 @@ import { defineComponent, ref } from 'vue'
 import { formatDate, fullScreen } from '@/utils/index'
 import { useStore } from 'vuex'
 import CustomTheme from '@/components/custom-theme.vue'
+import { useRouter } from 'vue-router'
 
 function useMouse () {
   let [ cursorLeft, cursorWidth ] = [ ref(0), ref(0) ]
@@ -92,6 +89,7 @@ export default defineComponent({
   components: { CustomTheme },
   setup () {
     const _store = useStore()
+    const _router = useRouter()
 
     const formate = 'yyyy年MM月dd日 HH时mm分ss秒 星期w'
     const date = ref(formatDate(new Date(), formate))
@@ -101,11 +99,19 @@ export default defineComponent({
 
     const { mouseMoveHandler, mouseLeaveHandler, cursorLeft, cursorWidth } = useMouse()
 
+    const logoutHandler = () => {
+      // 清除 token
+
+      // 跳转至登陆页
+      _router.push({ name: 'user', params: { action: 'login' } })
+    }
+
     return {
       date,
       menuCollapseHandler,
       mouseMoveHandler, mouseLeaveHandler, cursorLeft, cursorWidth,
-      fullScreenHandler: () => fullScreen(document.body)
+      fullScreenHandler: () => fullScreen(document.body),
+      logoutHandler
     }
   }
 })
@@ -146,10 +152,9 @@ export default defineComponent({
         }
       }
 
-      > time {
+      time {
         color: $--color-primary;
-        font-size: $size-text-large;
-        text-shadow: 3px 3px 4px;
+        text-shadow: 1px 1px 3px;
       }
 
       + .nav-item {
@@ -168,10 +173,15 @@ export default defineComponent({
     }
   }
 
-  .user_menu {
+  .user-info {
+    display: flex;
+    align-items: center;
     cursor: pointer;
-    padding-left: 6px;
     transition: .2s;
+
+    > span:last-child {
+      padding-left: 6px;
+    }
 
     i.iconfont {
       display: inline-block;

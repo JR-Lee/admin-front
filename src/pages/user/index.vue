@@ -1,6 +1,6 @@
 <template>
-  <div>
-    登录
+  <div class="ut_layout-center">
+    <router-view></router-view>
   </div>
 </template>
 
@@ -13,7 +13,3 @@ export default defineComponent({
   }
 })
 </script>
-
-<style scoped>
-
-</style>
