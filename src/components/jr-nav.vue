@@ -2,16 +2,26 @@
   <nav @mousemove="mouseMoveHandler" @mouseleave="mouseLeaveHandler">
     <div class="nav-left">
       <div class="nav-item nav-ink">
-        <span class="ut_cursor-pointer ut_bold" @click="menuCollapseHandler">
-          <i v-if="$store.state.isCollapse" title="展开菜单" class="iconfont icon-zhedie2"></i>
-          <i v-else title="收起菜单" class="iconfont icon-zhedie1"></i>
-        </span>
+        <el-tooltip :content="$store.state.isCollapse ? '展开菜单' : '收起菜单'">
+          <span class="ut_cursor-pointer ut_bold" @click="menuCollapseHandler">
+            <i v-if="$store.state.isCollapse" class="iconfont icon-zhedie2"></i>
+            <i v-else class="iconfont icon-zhedie1"></i>
+          </span>
+        </el-tooltip>
       </div>
       <div class="nav-item nav-ink">
-        <span><i class="iconfont icon-qianduan"></i></span>
+        <el-tooltip content="前台">
+          <span>
+            <i class="iconfont icon-qianduan"></i>
+          </span>
+        </el-tooltip>
       </div>
       <div class="nav-item nav-ink">
-        <span><i class="iconfont icon-shuaxin"></i></span>
+        <el-tooltip content="刷新">
+          <span>
+            <i class="iconfont icon-shuaxin"></i>
+          </span>
+        </el-tooltip>
       </div>
     </div>
     <div class="nav-center">
@@ -21,22 +31,36 @@
     </div>
     <div class="nav-right">
       <div class="nav-item nav-ink">
-        <span title="消息"><i class="iconfont icon-xiaoxi1"></i></span>
+        <el-tooltip content="消息">
+          <span>
+            <i class="iconfont icon-xiaoxi1"></i>
+          </span>
+        </el-tooltip>
       </div>
       <div class="nav-item nav-ink">
-        <span>
-          <custom-theme title="切换主题">
-            <template #icon>
+        <el-tooltip content="切换主题">
+          <span>
+            <jr-theme>
               <i class="iconfont icon-zhuti"></i>
-            </template>
-          </custom-theme>
-        </span>
+            </jr-theme>
+          </span>
+        </el-tooltip>
       </div>
       <div class="nav-item nav-ink">
-        <span title="本地便签"><i class="iconfont icon-bianqian"></i></span>
+        <el-tooltip content="本地便签">
+          <span>
+            <jr-note>
+              <i class="iconfont icon-bianqian"></i>
+            </jr-note>
+          </span>
+        </el-tooltip>
       </div>
       <div class="nav-item nav-ink">
-        <span title="全屏展示" @click="fullScreenHandler"><i class="iconfont icon-quanping"></i></span>
+        <el-tooltip content="全屏展示">
+          <span @click="fullScreenHandler">
+            <i class="iconfont icon-quanping"></i>
+          </span>
+        </el-tooltip>
       </div>
       <div class="nav-item nav-ink">
         <el-dropdown trigger="click" placement="bottom-end">
@@ -68,7 +92,8 @@
 import { defineComponent, ref } from 'vue'
 import { formatDate, fullScreen } from '@/utils/index'
 import { useStore } from 'vuex'
-import CustomTheme from '@/components/custom-theme.vue'
+import JrTheme from '@/components/jr-theme.vue'
+import JrNote from '@/components/jr-note.vue'
 import { useRouter } from 'vue-router'
 
 function useMouse () {
@@ -86,7 +111,7 @@ function useMouse () {
 }
 
 export default defineComponent({
-  components: { CustomTheme },
+  components: { JrTheme, JrNote },
   setup () {
     const _store = useStore()
     const _router = useRouter()

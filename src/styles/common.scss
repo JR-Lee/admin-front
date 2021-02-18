@@ -1,11 +1,12 @@
-// ::-webkit-scrollbar {
-//   width: 7px;
-//   height: 7px;
-// }
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
 
-// ::-webkit-scrollbar-thumb {
-//   background: $--color-primary;
-// }
+::-webkit-scrollbar-thumb {
+  background: $--color-info;
+  border-radius: 10px;
+}
 
 html, body {
   height: 100%;
@@ -26,6 +27,10 @@ div, section, main, nav, aside, dl, ul, ol {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
+}
+
+dl, ul, ol {
+  list-style: none;
 }
 
 a {

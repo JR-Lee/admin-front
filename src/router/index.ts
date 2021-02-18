@@ -19,10 +19,30 @@ export const routes: RouteRecordRaw[] = [
     ]
   },
   {
-    path: '/edit',
-    name: 'edit',
-    meta: { title: '博客', icon: 'icon-boke-copy', hide: false },
-    component: () => import('pages/edit/index.vue')
+    path: '/content',
+    name: 'content',
+    meta: { title: '内容管理', icon: 'icon-neirongguanli', hide: false },
+    component: layout,
+    children: [
+      {
+        path: 'blog-list',
+        name: 'blog-list',
+        meta: { title: '博客列表', icon: 'icon-boke' },
+        component: () => import('pages/content/blog-list.vue')
+      },
+      {
+        path: 'blog-category',
+        name: 'blog-category',
+        meta: { title: '博客分类', icon: 'icon-more-copy' },
+        component: () => import('pages/content/blog-category.vue')
+      },
+      {
+        path: 'comment-list',
+        name: 'comment-list',
+        meta: { title: '评论列表', icon: 'icon-pinglunliebiao' },
+        component: () => import('pages/content/comment-list.vue')
+      }
+    ]
   },
   {
     path: '/account',
@@ -107,6 +127,8 @@ export const routes: RouteRecordRaw[] = [
     name: 'notFount'
   }
 ]
+
+export const staticMenus = routes.filter(route => route.meta && !route.meta.hide)
 
 export const router = createRouter({
   history: createWebHistory(),

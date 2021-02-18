@@ -1,10 +1,10 @@
 <template>
   <aside class="app-aside">
-    <aside-menu></aside-menu>
+    <jr-menu></jr-menu>
   </aside>
   <div class="app-main">
     <header>
-      <header-nav></header-nav>
+      <jr-nav></jr-nav>
       <section v-show="!isConsole" class="app-crumb ut_slide-down">
         <el-breadcrumb separator="/">
           <el-breadcrumb-item :to="{ path: '/' }">主页</el-breadcrumb-item>
@@ -29,15 +29,15 @@
 
 <script lang="ts">
 import { computed, defineComponent } from 'vue'
-import HeaderNav from '@/components/header-nav.vue'
-import AsideMenu from '@/components/aside-menu.vue'
+import JrNav from '@/components/jr-nav.vue'
+import JrMenu from '@/components/jr-menu.vue'
 import { useRoute } from 'vue-router'
 
 export default defineComponent({
   name: 'Layout',
   components: {
-    HeaderNav,
-    AsideMenu
+    JrNav,
+    JrMenu
   },
   setup() {
     const _route = useRoute()

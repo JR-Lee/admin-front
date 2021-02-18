@@ -6,7 +6,7 @@
     class="aside-menu"
     :default-active="$route.path"
     :collapse="$store.state.isCollapse"
-    unique-opened
+    
     router>
     <template v-for="menu in menus" :key="menu.name">
       <el-submenu v-if="menu.children" :index="menu.path">
@@ -33,11 +33,10 @@
 
 <script lang="ts">
 import { computed, defineComponent, ref } from 'vue'
-import { routes } from '@/router/index'
-import { RouteRecordRaw } from 'vue-router'
+import { staticMenus } from '@/router/index'
 
 function useMenu() {
-  const menus = computed(() => routes.filter((item: RouteRecordRaw) => !item.meta?.hide))
+  const menus = computed(() => staticMenus)
   const isCollapse = ref(true)
   return { menus, isCollapse }
 }
@@ -91,6 +90,11 @@ export default defineComponent({
     height: 100%;
     border-right: none;
     background-color: $background-main;
+    overflow-y: hidden;
+
+    &:hover {
+      overflow-y: auto;
+    }
 
     &.el-menu--collapse {
       width: 64px;

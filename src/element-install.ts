@@ -1,4 +1,6 @@
 import { App } from 'vue'
+import lang from 'element-plus/lib/locale/lang/zh-cn'
+import locale from 'element-plus/lib/locale'
 import {
   ElButton,
   ElMenu,
@@ -21,7 +23,11 @@ import {
   ElRadio,
   ElUpload,
   ElDialog,
-  ElRadioButton
+  ElRadioButton,
+  ElAlert,
+  ElEmpty,
+  ElTable,
+  ElTableColumn
 } from 'element-plus'
 
 const components = [
@@ -46,11 +52,20 @@ const components = [
   ElRadio,
   ElUpload,
   ElDialog,
-  ElRadioButton
+  ElRadioButton,
+  ElAlert,
+  ElEmpty,
+  ElTable,
+  ElTableColumn
 ]
 
+locale.use(lang)
+
+export interface PluginI {
+  install: (app: App) => void;
+}
 export default {
   install(app: App) {
-    for (const component of components) app.use(component)
+    for (const component of components) app.use(component as PluginI)
   }
 }

@@ -1,6 +1,6 @@
 <template>
-  <span @click="drawerHandler" :title="title">
-    <slot name="icon"></slot>
+  <span @click="drawerHandler">
+    <slot></slot>
   </span>
   <el-drawer
     v-model="visible"
@@ -22,7 +22,6 @@ function useDrawer() {
 }
 
 export default defineComponent({
-  props: { title: String },
   setup () {
     const { visible, drawerHandler } = useDrawer()
 
