@@ -3,14 +3,13 @@
     <slot></slot>
   </span>
   <el-drawer v-model="visible" custom-class="note-drawer" :with-header="false" append-to-body>
-    <div class="block-title ut_space-between ut_vertical-center">
-      <span>本地便签 ({{ notes.length ? notes.length : '' }})</span>
-      <el-button @click="addHandler" size="mini" plain>
-        <small>新建</small>
-      </el-button>
-    </div>
-    <el-alert style="border-radius: 0px;" title="本地便签将数据存放于本地" :closable="false" show-icon></el-alert>
-    <div class="block-content">
+    <jr-block :title="`本地便签 (${notes.length ? notes.length : ''})`" body-class="note-list_wrap">
+      <template #header-extra>
+        <el-button @click="addHandler" size="mini" plain>新建</el-button>
+      </template>
+      <template #divider>
+        <el-alert style="border-radius: 0px;" title="本地便签将数据存放于本地" :closable="false" show-icon></el-alert>
+      </template>
       <ul v-if="notes.length" class="note-list">
         <li v-for="note in notes.sort((current, next) => next.time - current.time)" :key="note.time">
           <header class="note-header">
@@ -26,7 +25,7 @@
         </li>
       </ul>
       <el-empty v-else description="暂无便签哦~"></el-empty>
-    </div>
+    </jr-block>
   </el-drawer>
 </template>
 
@@ -88,7 +87,7 @@ export default defineComponent({
       flex-direction: column;
       height: 100%;
 
-      .block-content {
+      .note-list_wrap {
         height: 100%;
         overflow-y: auto
       }

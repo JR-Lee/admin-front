@@ -7,6 +7,10 @@ import 'element-plus/lib/theme-chalk/index.css'
 import '@/styles/common.scss'
 import '@/styles/utils.scss'
 
+// 自定义组件
+import JrTable from '@/components/jr-table.vue'
+import JrBlock from '@/components/jr-block.vue'
+
 ~ async function () {
   await store.dispatch('getUserInfo')
 
@@ -16,5 +20,7 @@ import '@/styles/utils.scss'
   app.use(router)
     .use(store)
     .use(elementInstall)
+    .component('jr-table', JrTable)
+    .component('jr-block', JrBlock)
     .mount('#app')
 }()
