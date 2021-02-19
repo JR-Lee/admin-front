@@ -1,12 +1,13 @@
 <template>
-  <div class="logo-wrap">
+  <div class="logo-wrap" style="background: #202222">
     <router-link class="logo" tag="a" to="/" title="博客后台管理系统"></router-link>
   </div>
   <el-menu
     class="aside-menu"
     :default-active="$route.path"
     :collapse="$store.state.isCollapse"
-    
+    background-color="#202222"
+    text-color="#fff"
     router>
     <template v-for="menu in menus" :key="menu.name">
       <el-submenu v-if="menu.children" :index="menu.path">
@@ -89,7 +90,6 @@ export default defineComponent({
     width: $aside-width;
     height: 100%;
     border-right: none;
-    background-color: $background-main;
     overflow-y: hidden;
 
     &:hover {

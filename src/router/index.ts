@@ -27,7 +27,7 @@ export const routes: RouteRecordRaw[] = [
       {
         path: 'blog-list',
         name: 'blog-list',
-        meta: { title: '博客列表', icon: 'icon-boke' },
+        meta: { title: '博客管理', icon: 'icon-boke' },
         component: () => import('pages/content/blog-list.vue')
       },
       {
