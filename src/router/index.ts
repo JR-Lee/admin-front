@@ -33,13 +33,13 @@ export const routes: RouteRecordRaw[] = [
       {
         path: 'blog-category',
         name: 'blog-category',
-        meta: { title: '博客分类', icon: 'icon-more-copy' },
+        meta: { title: '分类管理', icon: 'icon-more-copy' },
         component: () => import('pages/content/blog-category.vue')
       },
       {
         path: 'comment-list',
         name: 'comment-list',
-        meta: { title: '评论列表', icon: 'icon-pinglunliebiao' },
+        meta: { title: '评论管理', icon: 'icon-pinglunliebiao' },
         component: () => import('pages/content/comment-list.vue')
       }
     ]

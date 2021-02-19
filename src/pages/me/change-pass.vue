@@ -1,6 +1,5 @@
 <template>
-  <header class="block-title">修改密码</header>
-  <div class="block-content">
+  <jr-block title="重置密码">
     <el-form label-width="130px" class="app-form">
       <el-form-item label="当前密码">
         <el-input v-model="form.currentPassword" type="password" placeholder="请输入当前密码"></el-input>
@@ -16,7 +15,7 @@
         <el-button @click="submitHandler" type="primary">确认修改</el-button>
       </el-form-item>
     </el-form>
-  </div>
+  </jr-block>
 </template>
 
 <script lang="ts">

@@ -1,20 +1,19 @@
 <template>
-  <jr-block title="博客分类列表">
-    <template #header-extra>
-      <el-button type="primary" size="mini">添加类别</el-button>
-    </template>
+  <jr-block
+    :action="{ type: 'primary', text: '添加类别', handler: addHandler }"
+    title="博客分类列表">
     <jr-table
-      :data="categories"
+      :data-source="categories"
       :on-edit="editHandler"
       :on-delete="deleteHandler"
-      empty="暂无分类"
-      action="both">
+      empty="暂无分类">
       <el-table-column prop="name" label="类别"></el-table-column>
     </jr-table>
   </jr-block>
 </template>
 
 <script lang="ts">
+import { ElMessageBox } from 'element-plus'
 import { defineComponent, ref } from 'vue'
 
 function useTable() {
@@ -39,15 +38,25 @@ function useTable() {
     
   }
 
-  return { categories, editHandler, deleteHandler }
+  const addHandler = () => {
+    ElMessageBox.prompt('', '新增类别')
+      .then(({ value }) => {
+        if (!value) return
+        // 这里提交数据
+        console.log(value)
+      })
+      .catch(err => console.log(err))
+  }
+
+  return { categories, editHandler, deleteHandler, addHandler }
 }
 
 export default defineComponent({
   setup () {
-    const { categories, editHandler, deleteHandler } = useTable()
+    const { categories, editHandler, deleteHandler, addHandler } = useTable()
 
     return {
-      categories, editHandler, deleteHandler
+      categories, editHandler, deleteHandler, addHandler
     }
   }
 })

@@ -1,6 +1,5 @@
 <template>
-  <header class="block-title">设置我的资料</header>
-  <div class="block-content">
+  <jr-block title="设置我的资料">
     <el-form label-width="125px" class="app-form">
       <el-form-item label="我的角色">
         <el-select v-model="form.role" :style="{ width: '100%' }" placeholder="请选择角色">
@@ -71,7 +70,7 @@
         <el-button>重新填写</el-button>
       </el-form-item>
     </el-form>
-  </div>
+  </jr-block>
 </template>
 
 <script lang="ts">

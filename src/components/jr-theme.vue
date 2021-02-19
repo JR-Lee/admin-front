@@ -7,7 +7,7 @@
     append-to-body
     :show-close="false"
     :with-header="false">
-    <div class="block-title">自定义主题</div>
+    <jr-block title="自定义主题"></jr-block>
   </el-drawer>
 </template>
 
