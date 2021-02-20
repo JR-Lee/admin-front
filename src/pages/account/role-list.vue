@@ -1,5 +1,5 @@
 <template>
-  <header class="block-title">角色列表</header>
+  <div class="router-view_content"></div>
 </template>
 
 <script lang="ts">

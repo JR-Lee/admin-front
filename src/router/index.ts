@@ -6,15 +6,15 @@ export const routes: RouteRecordRaw[] = [
   {
     path: '/home',
     name: 'home',
-    redirect: { name: 'console' },
-    meta: { title: '主页', icon: 'icon-shouye', hide: false },
+    redirect: { name: 'index' },
+    meta: { title: '主页', icon: 'icon-shouye', hide: false, single: true },
     component: layout,
     children: [
       {
-        path: 'console',
-        name: 'console',
+        path: 'index',
+        name: 'index',
         meta: { title: '控制台', icon: 'icon-kongzhitai' },
-        component: () => import('pages/home/console-board.vue')
+        component: () => import('pages/home/index.vue')
       }
     ]
   },

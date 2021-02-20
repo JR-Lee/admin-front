@@ -1,16 +1,18 @@
 <template>
-  <jr-block title="评论列表" :action="actions">
-    <jr-table :data-source="comments" :on-delete="() => {}" v-model:selected="selected">
-      <el-table-column prop="username" label="作者" width="100"></el-table-column>
-      <el-table-column prop="content" label="评论内容"></el-table-column>
-      <el-table-column prop="create_time" label="评论时间" width="200">
-        <template #default="{ row: { create_time } }">
-          {{ formatDate(new Date(create_time), 'yyyy-MM-dd HH:mm:ss 周w') }}
-        </template>
-      </el-table-column>
-      <el-table-column prop="status" label="状态" width="100"></el-table-column>
-    </jr-table>
-  </jr-block>
+  <div class="router-view_content">
+    <jr-block title="评论列表" :action="actions">
+      <jr-table :data-source="comments" :on-delete="() => {}" v-model:selected="selected">
+        <el-table-column prop="username" label="作者" width="100"></el-table-column>
+        <el-table-column prop="content" label="评论内容"></el-table-column>
+        <el-table-column prop="create_time" label="评论时间" width="200">
+          <template #default="{ row: { create_time } }">
+            {{ formatDate(new Date(create_time), 'yyyy-MM-dd HH:mm:ss 周w') }}
+          </template>
+        </el-table-column>
+        <el-table-column prop="status" label="状态" width="100"></el-table-column>
+      </jr-table>
+    </jr-block>
+  </div>
 </template>
 
 <script lang="ts">

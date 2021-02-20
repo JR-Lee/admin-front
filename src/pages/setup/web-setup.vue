@@ -1,5 +1,7 @@
 <template>
-  <header class="block-title">网站设置</header>
+  <div class="router-view_content">
+    <jr-block title="网站设置"></jr-block>
+  </div>
 </template>
 
 <script lang="ts">

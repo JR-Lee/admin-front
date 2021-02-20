@@ -1,15 +1,17 @@
 <template>
-  <jr-block
-    :action="{ type: 'primary', text: '添加类别', handler: addHandler }"
-    title="博客分类列表">
-    <jr-table
-      :data-source="categories"
-      :on-edit="editHandler"
-      :on-delete="deleteHandler"
-      empty="暂无分类">
-      <el-table-column prop="name" label="类别"></el-table-column>
-    </jr-table>
-  </jr-block>
+  <div class="router-view_content">
+    <jr-block
+      :action="{ type: 'primary', text: '添加类别', handler: addHandler }"
+      title="博客分类列表">
+      <jr-table
+        :data-source="categories"
+        :on-edit="editHandler"
+        :on-delete="deleteHandler"
+        empty="暂无分类">
+        <el-table-column prop="name" label="类别"></el-table-column>
+      </jr-table>
+    </jr-block>
+  </div>
 </template>
 
 <script lang="ts">

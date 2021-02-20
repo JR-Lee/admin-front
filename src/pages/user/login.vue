@@ -105,7 +105,7 @@ function useForm(router: Router) {
     // 成功，存储 token
 
     // 跳转至控制台
-    router.push({ name: 'user-info' })
+    router.push({ name: 'home' })
   }
 
   return { form, submitHandler, verifyLoading, submitLoading, verifyDisabled, verifyText, getVerify }

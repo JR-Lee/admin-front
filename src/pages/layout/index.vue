@@ -18,11 +18,9 @@
       </section>
     </header>
     <main class="router-view_wrap">
-      <div class="router-view_content">
-        <router-view #="{ Component }">
-          <component :is="Component"></component>
-        </router-view>
-      </div>
+      <router-view #="{ Component }">
+        <component :is="Component"></component>
+      </router-view>
     </main>
   </div>
 </template>
@@ -42,8 +40,8 @@ export default defineComponent({
   setup() {
     const _route = useRoute()
 
-    // 当前页面是否为控制台
-    const isConsole = computed(() => _route.name === 'console')
+    // 当前页面是否为首页
+    const isConsole = computed(() => _route.name === 'index')
 
     return { isConsole }
   }

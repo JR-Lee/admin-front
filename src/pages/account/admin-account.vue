@@ -1,5 +1,5 @@
 <template>
-  <header class="block-title">后台账号列表</header>
+  <div class="router-view_content"></div>
 </template>
 
 <script lang="ts">

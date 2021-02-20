@@ -8,6 +8,7 @@
     :collapse="$store.state.isCollapse"
     background-color="#202222"
     text-color="#fff"
+    unique-opened
     router>
     <template v-for="menu in menus" :key="menu.name">
       <el-submenu v-if="menu.children" :index="menu.path">
