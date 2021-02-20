@@ -67,6 +67,7 @@ locale(lang)
 
 export interface PluginI {
   install: (app: App) => void;
+  [key: string]: unknown;
 }
 export default {
   install(app: App) {

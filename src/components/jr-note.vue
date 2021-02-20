@@ -3,7 +3,7 @@
     <slot></slot>
   </span>
   <el-drawer v-model="visible" custom-class="note-drawer" :with-header="false" append-to-body>
-    <jr-block :title="`本地便签 (${notes.length ? notes.length : ''})`" body-class="note-list_wrap">
+    <jr-block :title="`本地便签${notes.length ? ' (' + notes.length + ')' : ''}`" body-class="note-list_wrap">
       <template #header-extra>
         <el-button @click="addHandler" size="mini" plain>新建</el-button>
       </template>

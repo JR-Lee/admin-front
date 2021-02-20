@@ -5,7 +5,7 @@
       <el-table-column prop="content" label="评论内容"></el-table-column>
       <el-table-column prop="create_time" label="评论时间" width="200">
         <template #default="{ row: { create_time } }">
-          {{ formatDate(new Date(create_time), 'yyyy-MM-dd HH-mm-ss 周w') }}
+          {{ formatDate(new Date(create_time), 'yyyy-MM-dd HH:mm:ss 周w') }}
         </template>
       </el-table-column>
       <el-table-column prop="status" label="状态" width="100"></el-table-column>
@@ -25,7 +25,7 @@ function useAction() {
   const actions = [
     {
       type: 'danger',
-      text: '批量删除',
+      text: '删除',
       handler: () => {
         if (!selected.value.length) ElMessage.warning('请选择数据')
         else console.log(selected.value)
