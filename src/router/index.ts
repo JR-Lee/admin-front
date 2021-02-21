@@ -137,18 +137,16 @@ export const router = createRouter({
 
 // 进度条
 let progressEl: HTMLElement
-let timer: NodeJS.Timeout | undefined
 
 router.beforeEach((to, from, next) => {
   if (!progressEl) progressEl = document.querySelector('.app-progress') as HTMLElement
   if (progressEl) progressEl.classList.add('app-progress_ready')
-
   next()
 })
 
 router.afterEach(() => {
   if (progressEl) {
     progressEl.classList.add('app-progress_complete')
-    timer = setTimeout(() => progressEl.className = 'app-progress', 1000)
+    setTimeout(() => progressEl.className = 'app-progress', 800)
   }
 })
