@@ -23,6 +23,9 @@
       </router-view>
     </main>
   </div>
+  <section class="app-progress">
+    <span></span>
+  </section>
 </template>
 
 <script lang="ts">
@@ -75,6 +78,36 @@ export default defineComponent({
     height: $nav-height;
     padding: 0px $spacing-x;
     background: $background-main;
+  }
+
+  .app-progress {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 100;
+    width: 100%;
+    height: 2px;
+
+    > span {
+      display: block;
+      width: 0%;
+      height: 100%;
+      background-color: $--color-primary;
+    }
+
+    &.app-progress_ready {
+      > span {
+        width: 77.777%;
+        transition: width 1.2s ease-in;
+      }
+    }
+
+    &.app-progress_complete {
+      > span {
+        width: 99.999%;
+        transition: width .7s ease-in;
+      }
+    }
   }
 </style>
 
