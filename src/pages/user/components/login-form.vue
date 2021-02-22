@@ -35,8 +35,10 @@
 <script lang="ts">
 import { defineComponent, ref, reactive } from 'vue'
 import { login } from '@/http/api'
+import { storage } from '@/utils'
+import { Router, useRouter } from 'vue-router'
 
-function useLoginForm() {
+function useLoginForm(router: Router) {
   const form  = reactive({
     username: undefined,
     password: undefined,
@@ -49,15 +51,15 @@ function useLoginForm() {
   const loginHandler = () => {
     const data = JSON.parse(JSON.stringify(form))
 
-    // 表单验证
-
     // 接口调用
     login({ username: data.username, password: data.password })
-
-    // 成功，存储 token
-
-    // 跳转至控制台
-    // router.push({ name: 'home' })
+      .then(({ data: { token }}) => {
+        storage.set('token', token)
+        router.push({ name: 'home' })
+      })
+      .catch(err => {
+        console.log(err.message)
+      })
   }
 
   return { form, loginHandler, loginLoading }
@@ -66,7 +68,9 @@ function useLoginForm() {
 export default defineComponent({
   emits: ['change-action'],
   setup () {
-    const { form, loginHandler, loginLoading } = useLoginForm()
+    const router = useRouter()
+
+    const { form, loginHandler, loginLoading } = useLoginForm(router)
 
     return {
       form, loginHandler, loginLoading,

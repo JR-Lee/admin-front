@@ -17,10 +17,14 @@ http.interceptors.request.use(function (config) {
 // 添加响应拦截器
 http.interceptors.response.use(function (response) {
   const { data: { code, message } } = response
-  if (code !== 200 || code !== 201) ElMessage.error(message)
+  if (code !== 200 && code !== 201) {
+    ElMessage.warning(message)
+    return Promise.reject(new Error(message))
+  }
   return response
 }, function (error) {
   // 对响应错误做点什么
+  ElMessage.error(error.message)
   return Promise.reject(error)
 })
 
