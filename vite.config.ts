@@ -28,14 +28,14 @@ export default defineConfig({
     }
   },
 
-  // // 开发服务器
-  // server: {
-  //   proxy: {
-  //     '/api': {
-  //       target: 'http://127.0.0.1:8000',
-  //       changeOrigin: true,
-  //       rewrite: path => path.replace('/api', '')
-  //     }
-  //   }
-  // }
+  // 开发服务器
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://127.0.0.1:3030',
+        changeOrigin: true,
+        // rewrite: path => path.replace('/api', '')
+      }
+    }
+  }
 })

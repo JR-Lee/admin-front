@@ -104,21 +104,8 @@ export const routes: RouteRecordRaw[] = [
   {
     path: '/user',
     name: 'user',
-    redirect: { name: 'login' },
     meta: { title: '登录', hide: true },
     component: () => import('pages/user/index.vue'),
-    children: [
-      {
-        path: 'login',
-        name: 'login',
-        component: () => import('pages/user/login.vue')
-      },
-      {
-        path: 'register',
-        name: 'register',
-        component: () => import('pages/user/register.vue')
-      }
-    ]
   },
   {
     path: '/:pathMatch(.*)*',

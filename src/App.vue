@@ -41,14 +41,14 @@ export default defineComponent({
     &.app-progress_ready {
       > span {
         width: 77.777%;
-        transition: width 1.2s ease-in;
+        transition: width 1.2s ease-out;
       }
     }
 
     &.app-progress_complete {
       > span {
         width: 99.999%;
-        transition: width .7s ease-in;
+        transition: width .7s ease-out;
       }
     }
   }
