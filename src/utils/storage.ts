@@ -4,7 +4,13 @@ export default {
   },
 
   get(name: string) {
-    return JSON.parse(localStorage.getItem(name) + '')
+    let value
+    try {
+      value = JSON.parse(localStorage.getItem(name) as string)
+    } catch (err) { // 不符合 JSON 格式的数据返回原始数据
+      value = localStorage.getItem(name)
+    }
+    return value
   },
 
   remove(name: string) {

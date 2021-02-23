@@ -90,7 +90,7 @@
 
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
-import { formatDate, fullScreen } from '@/utils/index'
+import { formatDate, fullScreen, storage } from '@/utils/index'
 import { useStore } from 'vuex'
 import JrTheme from '@/components/jr-theme.vue'
 import JrNote from '@/components/jr-note.vue'
@@ -124,11 +124,10 @@ export default defineComponent({
 
     const { mouseMoveHandler, mouseLeaveHandler, cursorLeft, cursorWidth } = useMouse()
 
+    // 退出登录
     const logoutHandler = () => {
-      // 清除 token
-
-      // 跳转至登陆页
-      _router.push({ name: 'user', params: { action: 'login' } })
+      storage.remove('token')
+      _router.push({ name: 'user' })
     }
 
     return {

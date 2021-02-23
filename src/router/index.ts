@@ -1,3 +1,4 @@
+import { storage } from '@/utils'
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 
 const layout = () => import('pages/layout/index.vue')
@@ -125,10 +126,17 @@ export const router = createRouter({
 // 进度条
 let progressEl: HTMLElement
 
+// 白名单
+const whiteList = ['user']
+
 router.beforeEach((to, from, next) => {
   if (!progressEl) progressEl = document.querySelector('.app-progress') as HTMLElement
   if (progressEl) progressEl.classList.add('app-progress_ready')
-  next()
+
+  const token = storage.get('token')
+  if (!token && !whiteList.includes(to.name as string)) next({ name: 'user' })
+  else if (to.name === 'user' && token) next({ name: 'home' })
+  else next()
 })
 
 router.afterEach(() => {

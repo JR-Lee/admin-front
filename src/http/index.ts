@@ -1,13 +1,19 @@
+import { storage } from '@/utils'
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
+import { useRoute, useRouter } from 'vue-router'
 
 const http = axios.create({
-  baseURL: '/api'
+  baseURL: '/api',
+  timeout: 3000
 })
 
 // 添加请求拦截器
 http.interceptors.request.use(function (config) {
   // 在发送请求之前做些什么
+  const token = storage.get('token')
+  if (token) config.headers.token = token
+
   return config
 }, function (error) {
   // 对请求错误做些什么
@@ -17,11 +23,13 @@ http.interceptors.request.use(function (config) {
 // 添加响应拦截器
 http.interceptors.response.use(function (response) {
   const { data: { code, message } } = response
-  if (code !== 200 && code !== 201) {
+  if (code === 200 || code === 201) return response.data
+  else {
     ElMessage.warning(message)
+
+    if (code === 401) useRouter().push({ name: 'user' })
     return Promise.reject(new Error(message))
   }
-  return response
 }, function (error) {
   // 对响应错误做点什么
   ElMessage.error(error.message)
