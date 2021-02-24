@@ -50,7 +50,7 @@
 
 <script lang="ts">
 import { ElMessage } from 'element-plus'
-import { computed, defineComponent, onMounted, PropType, reactive, Ref, ref, nextTick } from 'vue'
+import { computed, defineComponent, onMounted, PropType, reactive, Ref, ref, nextTick, watch } from 'vue'
 
 export type ActionHandler = (index: number, row: unknown) => void | Promise<void>
 export interface Pagination {
@@ -91,28 +91,15 @@ function useAction(
 }
 
 /**
- * 筛选
- * @param { dataSource: unknown[] } - 数据源
- */
-function useFilter(dataSource: unknown[]){
-  const dataTarget = ref<unknown[]>([])
-
-  // 这里进行筛选
-  dataTarget.value = dataSource
-
-  return { dataTarget }
-}
-
-/**
  * 分页器
- * @param { dataTarget : Ref<unknown[]> } - 经过筛选的数据源
+ * @param { dataSource : Ref<unknown[]> } 数据源
  */
-function usePagination(dataTarget: Ref<unknown[]>) {
+function usePagination(dataSource: Ref<unknown[]>) {
   const pagination = reactive({
     currentPage: 1,
     pageSizes: [5, 10, 20, 50, 100],
     pageSize: 10,
-    total: dataTarget.value.length,
+    total: dataSource.value.length,
     background: true,
     layout: "total, sizes, prev, pager, next, jumper"
   })
@@ -124,7 +111,7 @@ function usePagination(dataTarget: Ref<unknown[]>) {
   // 当前页的数据
   const dataCurrent = computed(() => {
     const { currentPage: current, pageSize: size } = pagination
-    return dataTarget.value.slice((current - 1) * size, current * size)
+    return dataSource.value.slice((current - 1) * size, current * size)
   })
 
   return { pagination, sizeHandler, currentHandler, dataCurrent }
@@ -141,7 +128,7 @@ export default defineComponent({
     onEdit: Function as PropType<ActionHandler>,
     onDelete: Function as PropType<ActionHandler>,
     dataSource: {
-      type: Array,
+      type: Array as PropType<unknown[]>,
       default: []
     },
     pagination: {
@@ -151,8 +138,8 @@ export default defineComponent({
     selected: Array
   },
   setup (props, { emit }) {
-    const { dataTarget } = useFilter(props.dataSource)
-    const { pagination, sizeHandler, currentHandler, dataCurrent } = usePagination(dataTarget)
+    const dataSource = computed(() => props.dataSource)
+    const { pagination, sizeHandler, currentHandler, dataCurrent } = usePagination(dataSource)
     const { editHandler, deleteHandler, selectHandler } = useAction(emit, props.onEdit, props.onDelete)
 
     const tableHeight = ref('auto')

@@ -1,7 +1,7 @@
 <template>
   <header class="ut_align-center">
     <h2>注册</h2>
-    <div class="ut_color-info">基于 vue 的单页面博客管理后台</div>
+    <div>基于 vue 的单页面博客管理后台</div>
   </header>
   <main>
     <!-- 注册表单 -->
@@ -59,7 +59,7 @@
 <script lang="ts">
 import { defineComponent, reactive, ref, EmitsOptions } from 'vue'
 import { ElMessage } from 'element-plus'
-import { getVerifyCode, register } from '@/http/api'
+import { getVerifyCode, register } from '@/api'
 import { ElFormI } from '@/types/index'
 import { emit } from 'process'
 

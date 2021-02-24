@@ -29,7 +29,8 @@ import {
   ElTable,
   ElTableColumn,
   ElPagination,
-  ElLoading
+  ElLoading,
+  ElTag
 } from 'element-plus'
 
 const components = [
@@ -60,7 +61,8 @@ const components = [
   ElTable,
   ElTableColumn,
   ElPagination,
-  ElLoading
+  ElLoading,
+  ElTag
 ]
 
 locale(lang)

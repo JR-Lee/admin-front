@@ -1,7 +1,7 @@
 <template>
   <header class="ut_align-center">
     <h2>欢迎登录</h2>
-    <div class="ut_color-info">基于 vue 的单页面博客管理后台</div>
+    <div>基于 vue 的单页面博客管理后台</div>
   </header>
   <main>
     <el-form :model="form" :rules="rules" :ref="getRef" class="login-form">
@@ -34,7 +34,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, reactive } from 'vue'
-import { login } from '@/http/api'
+import { login } from '@/api'
 import { storage } from '@/utils'
 import { Router, useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'

@@ -1,4 +1,4 @@
-import http from "."
+import http from "@/http"
 
 /** 获取验证码 */
 export const getVerifyCode = (mail: string) => http.post('/verify-code/asign', { mail })
