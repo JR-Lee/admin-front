@@ -31,6 +31,7 @@
           </template>
         </el-table-column>
       </jr-table>
+      <el-dialog title="文章" :model-value="true" fullscreen></el-dialog>
     </jr-block>
   </div>
 </template>

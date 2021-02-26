@@ -1,7 +1,7 @@
+import { router } from '@/router'
 import { storage } from '@/utils'
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
-import { useRoute, useRouter } from 'vue-router'
 
 const http = axios.create({
   baseURL: '/api',
@@ -23,11 +23,16 @@ http.interceptors.request.use(function (config) {
 // 添加响应拦截器
 http.interceptors.response.use(function (response) {
   const { data: { code, message } } = response
+
   if (code === 200 || code === 201) return response.data
   else {
+
     ElMessage.warning(message)
 
-    if (code === 401) useRouter().push({ name: 'user' })
+    if (code === 401) {
+      storage.remove('token')
+      router.push({ name: 'user' })
+    }
     return Promise.reject(new Error(message))
   }
 }, function (error) {

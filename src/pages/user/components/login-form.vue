@@ -13,7 +13,7 @@
         </el-input>
       </el-form-item>
       <el-form-item prop="password">
-        <el-input v-model="form.password" type="password" placeholder="密码">
+        <el-input @keypress.enter="loginHandler" v-model="form.password" type="password" placeholder="密码">
           <template #prepend>
             <i class="iconfont icon-mima"></i>
           </template>
@@ -26,7 +26,13 @@
         </div>
       </el-form-item>
       <el-form-item>
-        <el-button @click="loginHandler" :loading="loginLoading" type="primary" style="width: 100%">登录</el-button>
+        <el-button
+          @click="loginHandler"
+          :loading="loginLoading"
+          type="primary"
+          style="width: 100%">
+          登录
+        </el-button>
       </el-form-item>
     </el-form>
   </main>

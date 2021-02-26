@@ -6,7 +6,7 @@
       v-loading="loading"
       element-loading-text="拼命加载中"
       element-loading-spinner="el-icon-loading"
-      element-loading-background="rgba(255, 255, 255, .4)"
+      element-loading-background="rgba(255, 255, 255, .7)"
       :data="dataCurrent"
       :height="tableHeight"
       @selection-change="selectHandler"
@@ -99,7 +99,7 @@ function usePagination(dataSource: Ref<unknown[]>) {
     currentPage: 1,
     pageSizes: [5, 10, 20, 50, 100],
     pageSize: 10,
-    total: dataSource.value.length,
+    total: computed(() => dataSource.value.length),
     background: true,
     layout: "total, sizes, prev, pager, next, jumper"
   })
