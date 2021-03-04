@@ -28,8 +28,8 @@ export const routes: RouteRecordRaw[] = [
       {
         path: 'blog-list',
         name: 'blog-list',
-        meta: { title: '博客管理', icon: 'icon-boke' },
-        component: () => import('pages/content/blog-list.vue')
+        meta: { title: '文章管理', icon: 'icon-boke' },
+        component: () => import('pages/content/blog-list/index.vue')
       },
       {
         path: 'blog-category',

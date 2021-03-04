@@ -4,7 +4,7 @@
     <div>基于 vue 的单页面博客管理后台</div>
   </header>
   <main>
-    <el-form :model="form" :rules="rules" :ref="getRef" class="login-form">
+    <el-form :model="form" :rules="rules" ref="formRef" class="login-form">
       <el-form-item prop="username">
         <el-input v-model="form.username" placeholder="用户名">
           <template #prepend>
@@ -39,60 +39,58 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, reactive } from 'vue'
-import { login } from '@/api'
+import { defineComponent, ref, reactive, Ref } from 'vue'
+import { login } from '@/api/user'
 import { storage } from '@/utils'
 import { Router, useRouter } from 'vue-router'
 import { ElMessage } from 'element-plus'
-import { ElFormItemContext } from 'element-plus/lib/el-form'
-
-function useLoginForm(router: Router) {
-  let formRef: ElFormItemContext
-
-  const getRef = (target: ElFormItemContext) => formRef = target
-
-  const form  = reactive({
-    username: undefined,
-    password: undefined,
-    verify: undefined
-  })
-  const rules = reactive({
-    username: [
-      { required: true, message: '请输入用户名', trigger: 'change' },
-      { max: 20,  message: '用户名不超过 20 个字符', trigger: 'change' }
-    ],
-    password: [{ required: true, message: '请输入密码', trigger: 'change' }]
-  })
-
-  const loginLoading = ref(false)
-
-  // 提交表单
-  const loginHandler = async () => {
-    try {
-      await formRef.validate()
-
-      loginLoading.value = true
-      const { username, password } = form as unknown as Record<string, string>
-      const { data: { token }} = await login({ username, password })
-      storage.set('token', token)
-      ElMessage.success('登录成功，即将跳转至首页')
-      setTimeout(() => router.push({ name: 'home' }), 1000)
-    } catch (err) {
-      loginLoading.value = false
-      console.log(err)
-    }
-  }
-
-  return { form, rules, loginHandler, loginLoading, getRef }
-}
+import { IElForm } from '@/types'
 
 export default defineComponent({
   emits: ['change-action'],
   setup () {
     const router = useRouter()
 
+    let formRef = ref() as unknown as Ref<IElForm>
+
+    const form  = reactive({
+      username: undefined,
+      password: undefined,
+      verify: undefined
+    })
+    const rules = reactive({
+      username: [
+        { required: true, message: '请输入用户名', trigger: 'change' },
+        { max: 20,  message: '用户名不超过 20 个字符', trigger: 'change' }
+      ],
+      password: [{ required: true, message: '请输入密码', trigger: 'change' }]
+    })
+
+    const loginLoading = ref(false)
+
+    // 提交表单
+    const loginHandler = async () => {
+      loginLoading.value = true
+      try {
+        await formRef.value.validate()
+
+        const { username, password } = form as unknown as Record<string, string>
+        const { data: { token }} = await login({ username, password })
+        storage.set('token', token)
+        ElMessage.success('登录成功，即将跳转至首页')
+        setTimeout(() => router.push({ name: 'home' }), 1000)
+      } catch (err) {
+        console.log(err)
+      }
+      loginLoading.value = false
+    }
+
     return {
-      ...useLoginForm(router)
+      form,
+      rules,
+      loginHandler,
+      loginLoading,
+      formRef
     }
   }
 })

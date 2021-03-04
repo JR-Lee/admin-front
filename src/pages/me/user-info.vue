@@ -82,26 +82,6 @@ import { toBase64 } from '@/utils'
 
 interface FormI { [key: string]: string | undefined; }
 
-function useForm() {
-  const form  = reactive<FormI>({
-    role: undefined,
-    username: undefined,
-    nickname: undefined,
-    gender: undefined,
-    avatar: undefined,
-    phone: undefined,
-    mail: undefined,
-    remark: undefined
-  })
-
-  const avatarSuccessHandler = async (res: { id: string }, { raw }: { raw: File }) => {
-    const dataURL = await toBase64(raw)
-    form.avatar = dataURL
-  }
-
-  return { form, avatarSuccessHandler }
-}
-
 function usePreviewAvatar() {
   const avatarVisible = ref(false)
   const previewHandler = () => avatarVisible.value = true
@@ -111,12 +91,29 @@ function usePreviewAvatar() {
 
 export default defineComponent({
   setup () {
-    const { form, avatarSuccessHandler } = useForm()
     const { avatarVisible, previewHandler } = usePreviewAvatar()
 
+    const form  = reactive<FormI>({
+      role: undefined,
+      username: undefined,
+      nickname: undefined,
+      gender: undefined,
+      avatar: undefined,
+      phone: undefined,
+      mail: undefined,
+      remark: undefined
+    })
+
+    const avatarSuccessHandler = async (res: { id: string }, { raw }: { raw: File }) => {
+      const dataURL = await toBase64(raw)
+      form.avatar = dataURL
+    }
+
     return {
-      form, avatarSuccessHandler,
-      avatarVisible, previewHandler,
+      form,
+      avatarSuccessHandler,
+      avatarVisible,
+      previewHandler,
       roles
     }
   }

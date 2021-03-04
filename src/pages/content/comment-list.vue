@@ -21,27 +21,20 @@ import { comments } from '@/mock/index'
 import { formatDate } from '@/utils/index'
 import { ElMessage } from 'element-plus'
 
-function useAction() {
-  const selected = ref([]) // 选中项
-
-  const actions = [
-    {
-      type: 'danger',
-      text: '删除',
-      handler: () => {
-        if (!selected.value.length) ElMessage.warning('请选择数据')
-        else console.log(selected.value)
-      }
-    }
-  ]
-
-  return { selected, actions }
-}
-
 export default defineComponent({
   setup () {
-    const { selected, actions } = useAction()
+    const selected = ref([]) // 选中项
 
+    const actions = [
+      {
+        type: 'danger',
+        text: '删除',
+        handler: () => {
+          if (!selected.value.length) ElMessage.warning('请选择数据')
+          else console.log(selected.value)
+        }
+      }
+    ]
 
     return {
       comments,

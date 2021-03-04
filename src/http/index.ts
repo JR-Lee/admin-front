@@ -5,14 +5,15 @@ import { ElMessage } from 'element-plus'
 
 const http = axios.create({
   baseURL: '/api',
-  timeout: 3000
+  timeout: 10000
 })
 
 // 添加请求拦截器
 http.interceptors.request.use(function (config) {
   // 在发送请求之前做些什么
   const token = storage.get('token')
-  if (token) config.headers.token = token
+
+  config.headers.token = token
 
   return config
 }, function (error) {

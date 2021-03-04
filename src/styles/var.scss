@@ -48,13 +48,13 @@ $aside-width: 220px;
 // 正常文本
 $size-text: 14px;
 // 大号文本
-$size-text-large: 16px;
-$size-text-large-x: 17px;
-$size-text-large-2x: 18px;
+$size-text-large: $size-text + 1px;
+$size-text-large-x: $size-text + 2px;
+$size-text-large-2x: $size-text + 3px;
 // 小号文本
-$size-text-small: 14px;
-$size-text-small-x: 13px;
-$size-text-small-2x: 12px;
+$size-text-small: $size-text - 1px;
+$size-text-small-x: $size-text - 2px;
+$size-text-small-2x: $size-text - 3px;
 
 // 统一边距
 $spacing: 13px;

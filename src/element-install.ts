@@ -30,7 +30,9 @@ import {
   ElTableColumn,
   ElPagination,
   ElLoading,
-  ElTag
+  ElTag,
+  ElBadge,
+  ElDatePicker
 } from 'element-plus'
 
 const components = [
@@ -62,7 +64,9 @@ const components = [
   ElTableColumn,
   ElPagination,
   ElLoading,
-  ElTag
+  ElTag,
+  ElBadge,
+  ElDatePicker
 ]
 
 locale(lang)

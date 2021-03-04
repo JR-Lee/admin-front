@@ -37,7 +37,7 @@ export default defineComponent({
     left: 50%;
     padding: 10px 30px 20px;
     color: #fff;
-    background: rgba(0, 0, 0, 0.42);
+    // background: rgba(0, 0, 0, 0.42);
     border-radius: 10px;
     transform: translate(-50%, -50%);
   }
@@ -96,8 +96,19 @@ export default defineComponent({
     left: 0;
     right: 0;
     bottom: 0;
-    background: url(../../assets/background2.jpg) no-repeat center bottom;
+    background: url(../../assets/background2.jpg) no-repeat center center;
     background-size: cover;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      right: 0px;
+      bottom: 0px;
+      z-index: 1;
+      background-color: rgba(0, 0, 0, 0.42);
+    }
   }
 
   .app-copyright {

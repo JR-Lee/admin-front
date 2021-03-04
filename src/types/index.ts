@@ -1,5 +1,5 @@
-import ElFormI from './el-form'
+import IElForm from './el-form'
 
 export {
-  ElFormI
+  IElForm
 }
